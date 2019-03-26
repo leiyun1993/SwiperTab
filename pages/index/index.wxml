@@ -1,0 +1,16 @@
+<!--pages/index/index.wxml-->
+<!-- tab -->
+<view class='navbar'>
+  <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="navbar-item {{tab1Index==index?'bar-item-on':''}}" data-index='{{index}}' bindtap='onTab1Click'>
+        <view class='navbar-title'>{{item}}</view>
+      </view>
+  </block>
+  <view class="navbar-slider" style="left: {{sliderLeft}}px; width:50px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+</view>
+<!-- 内容区  swiper -->
+<swiper duration='300' bindtransition="swiperTran" bindanimationfinish="animationfinish" current="{{tab1Index}}" bindchange='swiperChange' data-index='{{tab1Index}}'>
+    <swiper-item wx:for="{{tabs}}" wx:key="*this">
+      <view style='background-color:{{colors[index]}};height:100%;text-align:center;'>{{item}}</view>
+    </swiper-item>
+</swiper>
